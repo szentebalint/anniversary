@@ -1,14 +1,14 @@
 import { Heart } from "lucide-react";
 
 const reasons = [
-  "The way you laugh at my terrible jokes — it makes everything feel lighter.",
-  "How you always know exactly what to say when I need to hear it most.",
-  "Your passion for the things you love inspires me every single day.",
-  "The way your eyes light up when you talk about something you're excited about.",
-  "How safe and at home I feel whenever I'm with you.",
-  "Your kindness — the way you treat everyone around you with so much warmth.",
-  "The little notes and surprises that remind me I'm always on your mind.",
-  "Because every day with you feels like the best day of my life.",
+  "Hogy sosem lehet melletted unatkozni, mindig van program",
+  "A jóreggelt üzeneteid és képeid minden nap",
+  "Hogy mindig kiönhetem neked, mi zajlik bennem",
+  "Hogy mindig csinosítgatod magad nekem, még a legkisebb eseményekre is",
+  "Hogy mindig velem tervezed a jövőd",
+  "Hogy rengeteg energiát teszel a kapcsolatba",
+  "A megannyi FaceTime hívás",
+  "Hogy jobb ember lettem tőled, köszönöm 💕"
 ];
 
 const LoveReasons = () => {
@@ -19,7 +19,7 @@ const LoveReasons = () => {
           Dolgok, amiért szeretlek
         </h2>
         <p className="text-center text-muted-foreground text-sm mb-10 font-handwritten text-lg">
-          Pár, a megszámlálhatatlanból… 💕
+          Pár dolog, a megszámlálhatatlanból… 💕
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

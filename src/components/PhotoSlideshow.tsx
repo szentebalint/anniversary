@@ -6,14 +6,43 @@ import photo1 from "@/assets/photos/photo1.jpg";
 import photo2 from "@/assets/photos/photo2.jpg";
 import photo3 from "@/assets/photos/photo3.jpg";
 import photo4 from "@/assets/photos/photo4.jpg";
-import photo5 from "@/assets/photos/photo5.jpg";
+import photo5 from "@/assets/photos/photo5.jpg"
+import photo6 from "@/assets/photos/photo6.jpg";
+import photo7 from "@/assets/photos/photo7.jpg"
+import photo8 from "@/assets/photos/photo8.jpg"
+import photo9 from "@/assets/photos/photo9.jpg"
+import photo10 from "@/assets/photos/photo10.jpg"
+import photo11 from "@/assets/photos/photo11.jpg"
+import photo12 from "@/assets/photos/photo12.jpg"
+import photo13 from "@/assets/photos/photo13.jpg"
+import photo14 from "@/assets/photos/photo14.jpg"
+import photo15 from "@/assets/photos/photo15.jpg"
+import photo16 from "@/assets/photos/photo16.jpg"
+import photo17 from "@/assets/photos/photo17.jpg"
+import photo18 from "@/assets/photos/photo18.jpg"
+import photo19 from "@/assets/photos/photo19.jpg"
+
 
 const photos = [
-  { src: photo1, caption: "Our first adventure together" },
-  { src: photo2, caption: "That magical sunset we shared" },
-  { src: photo3, caption: "Laughing until our cheeks hurt" },
-  { src: photo4, caption: "The place where it all began" },
-  { src: photo5, caption: "Just us, being us" },
+  { src: photo1, caption: "" },
+  { src: photo2, caption: "" },
+  { src: photo3, caption: "" },
+  { src: photo4, caption: "" },
+  { src: photo5, caption: "" },
+  { src: photo6, caption: "" },
+  { src: photo7, caption: "" },
+  { src: photo8, caption: "" },
+  { src: photo9, caption: "" },
+  { src: photo10, caption: "" },
+  { src: photo11, caption: "" },
+  { src: photo12, caption: "" },
+  { src: photo13, caption: "" },
+  { src: photo14, caption: "" },
+  { src: photo15, caption: "" },
+  { src: photo16, caption: "" },
+  { src: photo17, caption: "" },
+  { src: photo18, caption: "" },
+  { src: photo19, caption: "" },
 ];
 
 const PhotoSlideshow = () => {
@@ -45,7 +74,7 @@ const PhotoSlideshow = () => {
           Emlékeink
         </h2>
         <p className="text-center text-muted-foreground font-handwritten text-lg mb-8">
-          Ezekre örökké emlékezni fogunk ✨
+          Itt vagyunk a legcukibbak, ezek közös képek
         </p>
 
         <div
@@ -53,7 +82,7 @@ const PhotoSlideshow = () => {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="aspect-[4/5] sm:aspect-video relative">
+          <div className="aspect-[4/5] sm:aspect-[3/4] relative">
             <img
               src={photos[current].src}
               alt={photos[current].caption}
@@ -67,24 +96,7 @@ const PhotoSlideshow = () => {
           </div>
 
           {/* Navigation arrows */}
-          <button
-            onClick={prev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full
-              bg-white/80 backdrop-blur-sm flex items-center justify-center
-              text-foreground shadow-md active:scale-95 transition-transform"
-            aria-label="Previous photo"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={next}
-            className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full
-              bg-white/80 backdrop-blur-sm flex items-center justify-center
-              text-foreground shadow-md active:scale-95 transition-transform"
-            aria-label="Next photo"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
+          
         </div>
 
         {/* Dots */}

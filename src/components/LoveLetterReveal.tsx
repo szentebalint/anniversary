@@ -11,7 +11,7 @@ const LoveLetterReveal = () => {
           Levél, Neked
         </h2>
         <p className="text-muted-foreground font-handwritten text-lg mb-10">
-          Nyomd meg az olvasáshoz 💌
+          Nyomd meg az olvasáshoz
         </p>
 
         {!revealed && (
@@ -28,36 +28,21 @@ const LoveLetterReveal = () => {
 
         {revealed && (
           <div className="animate-letter-reveal bg-card border border-primary/15 rounded-2xl p-7 sm:p-10 shadow-xl text-left">
-            <p className="font-handwritten text-2xl text-primary mb-4">My Dearest,</p>
+            <p className="font-handwritten text-2xl text-primary mb-4">Kedves Kisgirl,</p>
 
             <div className="space-y-4 text-foreground/80 leading-relaxed text-[15px]">
-              <p>
-                From the very first moment I met you, I knew my life was about to change forever. 
-                You walked into my world and painted it with colors I never knew existed.
-              </p>
-              <p>
-                Every morning I wake up grateful that you're mine. Your smile is the sunrise I look 
-                forward to, your laughter is the melody that fills my days, and your love is the 
-                warmth that wraps around my heart.
-              </p>
-              <p>
-                You've taught me what it means to love unconditionally, to be patient, to be kind, 
-                and to cherish every single moment. With you, even the ordinary becomes extraordinary.
-              </p>
-              <p>
-                I promise to love you through every season, to hold your hand through every storm, 
-                and to celebrate every sunrise by your side. You are my today, my tomorrow, and 
-                my forever.
-              </p>
-              <p>
-                Thank you for choosing me. Thank you for being you. Thank you for every 
-                beautiful second we've shared.
-              </p>
+              <p>Először is nem akarok sablonosan írni, mert már pár levelet kaptál tőlem, azok tartalmát hiába írnám újra le. :D </p>
+
+              <p>Amikor először megláttalak az 59-es villamoson a Majornál, még nagyon régen, egyből tudtam, hogy ebből valami lesz, és lám,  itt vagyunk. Most írhatnám, hogy sok jón és nehézségen vagyunk túl, de az sablonos lenne.</p>
+
+              <p>Nagyon hálás vagyok mindazért, amit tettél értem az elmúlt három évben, és azért is, hogy máig mellettem vagy. Sokkal jobb ember lettem, amióta ismerlek, szerintem az eddigi eredményeim felét nem értem volna el egy ilyen támogató és jó útra terelő barátnő nélkül, mint Te. Teljesen máshogy látom a világot, mióta velem vagy, és tudjuk, hogy nem feltétlen jó irányból indultam :D</p>
+
+              <p>Nem is ragozom tovább, hiszen próbálok minden közhelyet mellőzni. Nagyon-nagyon szeretlek Kisgirl, köszönöm ezt a három évet és még százszor ennyit nekünk!</p>
             </div>
 
             <p className="font-handwritten text-xl text-primary mt-6 text-right">
-              Forever yours,<br />
-              With all my love 💕
+              Szeretettel,<br />
+              Kisboysid 💕
             </p>
           </div>
         )}

@@ -17,7 +17,7 @@ const Index = () => {
 
       <footer className="py-8 text-center bg-rose-light">
         <p className="font-handwritten text-xl text-primary/70">
-          Made with 💕 just for you
+          Szeretettel 💕 készült
         </p>
       </footer>
     </div>

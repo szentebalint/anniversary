@@ -82,7 +82,7 @@ const HeroCounter = () => {
         </div>
 
         <p className="text-xl font-handwritten text-primary/80">
-          …minden másodperc megérte 💕
+          … és minden másodperc megérte 💕
         </p>
       </div>
     </section>
