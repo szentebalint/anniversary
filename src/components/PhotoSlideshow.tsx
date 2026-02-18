@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import placeholder photos — replace these with your own!
@@ -21,50 +21,88 @@ import photo16 from "@/assets/photos/photo16.jpg"
 import photo17 from "@/assets/photos/photo17.jpg"
 import photo18 from "@/assets/photos/photo18.jpg"
 import photo19 from "@/assets/photos/photo19.jpg"
+import photo20 from "@/assets/photos/photo20.jpeg"
 
 
 const photos = [
-  { src: photo1, caption: "" },
+  { src: photo1, caption: "Minden itt kezdődött" },
   { src: photo2, caption: "" },
   { src: photo3, caption: "" },
-  { src: photo4, caption: "" },
+  { src: photo4, caption: "Újra kéne biciklizni" },
   { src: photo5, caption: "" },
   { src: photo6, caption: "" },
-  { src: photo7, caption: "" },
+  { src: photo7, caption: "Halo" },
   { src: photo8, caption: "" },
   { src: photo9, caption: "" },
-  { src: photo10, caption: "" },
+  { src: photo10, caption: "Innentől nálam ebben leszünk" },
   { src: photo11, caption: "" },
   { src: photo12, caption: "" },
   { src: photo13, caption: "" },
   { src: photo14, caption: "" },
-  { src: photo15, caption: "" },
+  { src: photo15, caption: "Nemsokára újra Tropicarium" },
   { src: photo16, caption: "" },
   { src: photo17, caption: "" },
   { src: photo18, caption: "" },
   { src: photo19, caption: "" },
+  { src: photo20, caption: "Ez a legfrisebb, szólj ha tegyek ide még képeket később :P" }
 ];
+
 
 const PhotoSlideshow = () => {
   const [current, setCurrent] = useState(0);
+
+  const [direction, setDirection] = useState<"left" | "right">("right");
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const prev = () => setCurrent((c) => (c === 0 ? photos.length - 1 : c - 1));
   const next = () => setCurrent((c) => (c === photos.length - 1 ? 0 : c + 1));
 
   // Swipe support
-  const [touchStart, setTouchStart] = useState<number | null>(null);
+  //const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  const touchStartX = useRef<number | null>(null);
+
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.touches[0].clientX);
+    //setTouchStart(e.touches[0].clientX);
+    touchStartX.current = e.touches[0].clientX;
+
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStart === null) return;
-    const diff = touchStart - e.changedTouches[0].clientX;
+
+    if (isAnimating) return;
+    if (touchStartX.current === null) return;
+
+
+    //if (touchStart === null) return;
+    //const diff = touchStart - e.changedTouches[0].clientX;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+
+
+    //if (Math.abs(diff) > 50) {
+    //  diff > 0 ? next() : prev();
+    //}
+
     if (Math.abs(diff) > 50) {
-      diff > 0 ? next() : prev();
+      setIsAnimating(true);
+
+      if (diff > 0) {
+        setDirection("right"); // következő kép jobbról jön be
+        next();
+      } else {
+        setDirection("left"); // előző kép balról jön be
+        prev();
+      }
+
+      window.setTimeout(() => setIsAnimating(false), 450);
     }
-    setTouchStart(null);
+
+
+    //setTouchStart(null);
+    touchStartX.current = null;
+
+
   };
 
   return (
@@ -84,10 +122,17 @@ const PhotoSlideshow = () => {
         >
           <div className="aspect-[4/5] sm:aspect-[3/4] relative">
             <img
+              key={current}
               src={photos[current].src}
               alt={photos[current].caption}
-              className="w-full h-full object-cover transition-opacity duration-500"
+              className={`w-full h-full object-cover transition-opacity duration-500 ${isAnimating
+                ? direction === "right"
+                  ? "animate-slide-in-right"
+                  : "animate-slide-in-left"
+                : ""
+                }`}
             />
+
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-5 pt-12">
               <p className="text-white font-handwritten text-lg">
                 {photos[current].caption}
@@ -96,30 +141,49 @@ const PhotoSlideshow = () => {
           </div>
 
           {/* Navigation arrows */}
-          
+
+          <button
+            onClick={prev}
+            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full
+              bg-white/80 backdrop-blur-sm flex items-center justify-center
+              text-foreground shadow-md active:scale-95 transition-transform"
+            aria-label="Previous photo"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={next}
+            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full
+              bg-white/80 backdrop-blur-sm flex items-center justify-center
+              text-foreground shadow-md active:scale-95 transition-transform"
+            aria-label="Next photo"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center gap-2 mt-4">
+
+        <div className="hidden sm:flex flex justify-center gap-2 mt-4">
           {photos.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 min-h-[44px] min-w-[44px] flex items-center justify-center ${
-                i === current ? "" : ""
-              }`}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 min-h-[44px] min-w-[44px] flex items-center justify-center ${i === current ? "" : ""
+                }`}
               aria-label={`Go to photo ${i + 1}`}
             >
               <span
-                className={`block w-2.5 h-2.5 rounded-full transition-all ${
-                  i === current
+                className={`block w-2.5 h-2.5 rounded-full transition-all ${i === current
                     ? "bg-primary scale-125"
                     : "bg-primary/30"
-                }`}
+                  }`}
               />
             </button>
           ))}
         </div>
+
       </div>
     </section>
   );
